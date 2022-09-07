@@ -55,9 +55,17 @@ class WallTest {
 
     @Test
     void findBlockByColor() {
-        Optional<BlockModel> blockModel = wall.findBlockByColor("red");
+        Optional<BlockModel> blockModel;
 
+        blockModel = wall.findBlockByColor("red");
         assertEquals("red", blockModel.get().getColor());
+
+        blockModel = wall.findBlockByColor("brown");
+        assertEquals("brown", blockModel.get().getColor());
+
+        blockModel = wall.findBlockByColor("white");
+        assertEquals("white", blockModel.get().getColor());
+        assertEquals("wood", blockModel.get().getMaterial());
     }
 
     @Test
@@ -66,6 +74,11 @@ class WallTest {
 
         assertEquals(3, blockModels.size());
         assertEquals("brick", blockModels.get(0).getMaterial());
+
+        blockModels = wall.findBlocksByMaterial("wood");
+
+        assertEquals(3, blockModels.size());
+        assertEquals("wood", blockModels.get(0).getMaterial());
     }
 
     @Test
