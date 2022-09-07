@@ -1,13 +1,14 @@
 package com.blockapp.wall.Wall.Api.Model;
 
 import com.blockapp.wall.Wall.Api.CompositeBlock;
-import com.blockapp.wall.Wall.Api.Exception.BlockNotFoundException;
 import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 
 import java.util.List;
 
+@Setter
 @RequiredArgsConstructor
-public class CompositeBlockImpl implements CompositeBlock {
+public class CompositeBlockModel implements CompositeBlock {
     private final List<BlockModel> blocks;
 
     @Override
@@ -15,9 +16,7 @@ public class CompositeBlockImpl implements CompositeBlock {
         return this.blocks.stream()
                 .map(BlockModel::getColor)
                 .findAny()
-                .orElseThrow(() -> {
-                    throw new BlockNotFoundException("Block not found!");
-                });
+                .get();
     }
 
     @Override
@@ -25,9 +24,7 @@ public class CompositeBlockImpl implements CompositeBlock {
         return this.blocks.stream()
                 .map(BlockModel::getMaterial)
                 .findAny()
-                .orElseThrow(() -> {
-                    throw new BlockNotFoundException("Block not found!");
-                });
+                .get();
     }
 
     @Override

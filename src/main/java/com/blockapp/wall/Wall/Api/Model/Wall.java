@@ -3,6 +3,7 @@ package com.blockapp.wall.Wall.Api.Model;
 import com.blockapp.wall.Wall.Api.Block;
 import com.blockapp.wall.Wall.Api.CompositeBlock;
 import com.blockapp.wall.Wall.Api.Structure;
+import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
 import java.util.ArrayList;
@@ -10,6 +11,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
+
 
 @RequiredArgsConstructor
 public class Wall implements Structure {
