@@ -1,16 +1,10 @@
 package com.blockapp.wall.Wall.Api.Model;
 
 import com.blockapp.wall.Wall.Api.CompositeBlock;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
 
 import java.util.List;
 
-@Setter
-@RequiredArgsConstructor
-public class CompositeBlockModel implements CompositeBlock {
-    private final List<BlockModel> blocks;
-
+public record CompositeBlockModel(List<BlockModel> blocks) implements CompositeBlock {
     @Override
     public String getColor() {
         return this.blocks.stream()
@@ -25,10 +19,5 @@ public class CompositeBlockModel implements CompositeBlock {
                 .map(BlockModel::getMaterial)
                 .findAny()
                 .get();
-    }
-
-    @Override
-    public List<BlockModel> getBlocks() {
-        return this.blocks;
     }
 }

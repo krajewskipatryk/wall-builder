@@ -3,7 +3,6 @@ package com.blockapp.wall.Wall.Api.Model;
 import com.blockapp.wall.Wall.Api.Block;
 import com.blockapp.wall.Wall.Api.CompositeBlock;
 import com.blockapp.wall.Wall.Api.Structure;
-import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
 import java.util.ArrayList;
@@ -22,7 +21,7 @@ public class Wall implements Structure {
         List<BlockModel> blockList = new ArrayList<>();
 
         blocks.stream()
-                .map(CompositeBlock::getBlocks)
+                .map(CompositeBlock::blocks)
                 .forEach(blockList::addAll);
 
         return blockList.stream()
@@ -35,7 +34,7 @@ public class Wall implements Structure {
         List<Block> blockList = new ArrayList<>();
 
         blocks.stream()
-                .map(CompositeBlock::getBlocks)
+                .map(CompositeBlock::blocks)
                 .forEach(blockList::addAll);
 
         return blockList.stream()
@@ -48,7 +47,7 @@ public class Wall implements Structure {
         AtomicInteger blockCount = new AtomicInteger();
 
         this.blocks.stream()
-                .map(block -> block.getBlocks().size())
+                .map(block -> block.blocks().size())
                 .forEach(blockCount::addAndGet);
 
         return blockCount.get();

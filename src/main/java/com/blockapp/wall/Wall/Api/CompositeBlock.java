@@ -5,5 +5,5 @@ import com.blockapp.wall.Wall.Api.Model.BlockModel;
 import java.util.List;
 
 public interface CompositeBlock extends Block {
-    List<BlockModel> getBlocks();
+    List<BlockModel> blocks();
 }
